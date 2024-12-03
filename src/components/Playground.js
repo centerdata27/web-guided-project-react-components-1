@@ -8,3 +8,31 @@
   - We never tamper with state: `healthPoints++`, `healthPoints--` or `someState.push(item)` is FORBIDDEN
   - We use the dedicated "state updater" to schedule a state change: `setHealthPoints(healthPoints + 1)`
 */
+import React, { useState } from "react";
+
+function Playground(props) {     
+  const [count, setCount] = useState(0); // Create a slice of state
+  const [spinnerOn, setSpinnerOn] = useState(false); // Create another slice of state
+
+  if (spinnerOn) {
+    return (
+      <div className="container">
+        <h3>The Spinner is {spinnerOn ? "ON" : "OFF"}</h3>
+        <button onClick={() => setSpinnerOn(false)}>Turn Off Spinner</button>
+      </div>
+    );
+  }
+
+  return(  
+    <div>
+      <h1>PLAYGROUND</h1>
+      <p>{count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <button onClick={() => setCount(count - 1)}>Decrement</button>
+      <h3>The spinner is {spinnerOn ? "ON" : "OFF"}</h3>
+      <button onClick={() => setSpinnerOn(!spinnerOn)}>Toggle Spinner</button>
+    </div>
+  );
+} 
+
+export default Playground; // export the component so it can be imported in other files

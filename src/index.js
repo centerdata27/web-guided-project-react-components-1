@@ -1,6 +1,7 @@
-import React from 'react'
-import { render } from 'react-dom'
-
+// Importing React and the render method from react-dom
+import React from 'react';
+import { render } from 'react-dom';
+import Playground from './components/Playground';
 /*
 💥💥💥 Rules when DECLARING a React component 💥💥💥
   - Name is capitalized
@@ -13,23 +14,50 @@ import { render } from 'react-dom'
   - We interpolate attribute values and content
 */
 
-/*
-💥💥💥 Rules when USING a React component 💥💥💥
-  - Components are utilized (invoked?) so we may obtain elements
-  - Instead of invoking the component with parens, we invoke with < />
-  - Instead of passing args with parens, we pass them with attribute-like syntax
-  - Don't forget all tags need to close correctly
-*/
-
+// Defining the App component
 function App(props) {
   return (
     <div className='container'>
+      {/**
+       * The following commented-out code is an example of how to create
+       * a DOM element using vanilla JavaScript, but it's not needed in React.
+       * React handles DOM updates for us.
+       * 
+       * const elem = document.createElement("div");
+       * elem.classList.add("container");
+       * document.body.appendChild(elem);
+       */}
+      
+      {/* Rendering a welcome message that includes the track prop */}
       <h1>Welcome to React, {props.track} rockstars!!</h1>
-    </div>
-  )
-}
+      <h2>Instructors Name: {props.name}, age {props.age}</h2>
+      <h3>Are you Happy ? {props.happy}</h3>
+      < Playground />
 
+    </div>
+  );
+}
+// Rendering the App component into the DOM
 render(
-  <App track='Web' />,
-  document.querySelector('#root')
-)
+  <App 
+    track='Web'        // Passing the 'track' prop with value 'Web'
+    name='Kevin'      // Passing the 'name' prop with value 'Kevin'
+    happy='NO'        // Passing the 'happy' prop with value 'NO'
+    age={72}          // Passing the 'age' prop with value 72 (using curly braces for a number)
+  />, 
+  document.querySelector('#root') // Targeting the root div in index.html
+
+
+
+
+);
+// // Rendering the App component into the DOM
+// render(
+//   <App track='Web' name='Kevin' happy="NO" age=(72) />, // Passing the 'track' prop with value 'Web'
+//   document.querySelector('#root') // Targeting the root div in index.html
+// );
+
+// render(
+//   <App track='Web' />,
+//   document.querySelector('#root')
+// )
