@@ -13,6 +13,7 @@ import React, { useState } from "react";
 function Playground(props) {     
   const [count, setCount] = useState(0); // Create a slice of state
   const [spinnerOn, setSpinnerOn] = useState(false); // Create another slice of state
+  const [weapon, setWep] = useState("sissors"); // Create a third slice of state
 
   if (spinnerOn) {
     return (
@@ -31,6 +32,13 @@ function Playground(props) {
       <button onClick={() => setCount(count - 1)}>Decrement</button>
       <h3>The spinner is {spinnerOn ? "ON" : "OFF"}</h3>
       <button onClick={() => setSpinnerOn(!spinnerOn)}>Toggle Spinner</button>
+
+
+      
+      <h3>The current weapon is {weapon}</h3>
+      <button onClick={() => setWep("sissors")}>Sissors</button>
+      <button onClick={() => setWep("rock")}>Rock</button>
+      <button onClick={() => setWep("paper")}>Paper</button>
     </div>
   );
 } 
